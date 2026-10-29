@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { siteConfig, getWhatsAppUrl } from '../data/siteConfig';
+import { portfolioLandingTechImg } from '../data/catalog';
 import { MessageSquare, ArrowRight, ShieldCheck, Zap, Sparkles, CheckCircle2 } from 'lucide-react';
 
 interface HeroProps {
@@ -121,7 +122,7 @@ export default function Hero({ onOpenSimulator, onOpenBriefing }: HeroProps) {
                 {/* Showcase Image: Tech Mockup */}
                 <div className="relative rounded-xl overflow-hidden border border-slate-800 mb-6 bg-slate-950 aspect-video group">
                   <img 
-                    src="/src/assets/images/portfolio_landing_tech_1793268769040.jpg" 
+                    src={portfolioLandingTechImg} 
                     alt="Exemplo de Landing Page Profissional" 
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

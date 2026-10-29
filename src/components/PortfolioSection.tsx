@@ -13,8 +13,9 @@ export default function PortfolioSection() {
     { id: 'all', label: 'Todos os Projetos' },
     { id: 'landing', label: 'Landing Pages' },
     { id: 'institutional', label: 'Institucionais' },
-    { id: 'ecommerce', label: 'Lojas Virtuais' },
+    { id: 'ecommerce', label: 'Lojas e Catálogos' },
     { id: 'menu', label: 'Cardápios' },
+    { id: 'portfolio', label: 'Portfólios' },
   ];
 
   const filteredProjects = activeTab === 'all'
@@ -153,11 +154,11 @@ export default function PortfolioSection() {
                 </div>
               </div>
 
-              {/* Ações Obrigatórias do Card: Botão "Ver Projeto" & Opcional "Código-Fonte" */}
+              {/* Ações Obrigatórias do Card: Botão "Ver site" & "Ver código" */}
               <div className="p-6 sm:p-7 pt-0 border-t border-slate-800/70 mt-2">
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
                   
-                  {/* Botão Principal: Ver Projeto (abre site publicado em nova aba) */}
+                  {/* Botão Principal: Ver site (abre site publicado em nova aba) */}
                   <a
                     href={project.liveUrl}
                     target="_blank"
@@ -165,11 +166,11 @@ export default function PortfolioSection() {
                     className="silver-button flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-sm transition-all text-center"
                     title={`Abrir ${project.title} em nova aba`}
                   >
-                    <span>Ver Projeto</span>
+                    <span>Ver site</span>
                     <ExternalLink className="w-4 h-4 stroke-[2.2]" />
                   </a>
 
-                  {/* Botão Opcional: Código-Fonte (quando link público do GitHub for fornecido) */}
+                  {/* Botão: Ver código (quando link público do GitHub for fornecido) */}
                   {project.githubUrl && (
                     <a
                       href={project.githubUrl}
@@ -179,7 +180,7 @@ export default function PortfolioSection() {
                       title="Ver código-fonte público no GitHub"
                     >
                       <Github className="w-4 h-4 text-slate-300" />
-                      <span>Código-Fonte</span>
+                      <span>Ver código</span>
                     </a>
                   )}
 
@@ -348,7 +349,7 @@ export default function PortfolioSection() {
                       rel="noopener noreferrer"
                       className="silver-button px-5 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 flex-1 sm:flex-initial"
                     >
-                      <span>Abrir Site Publicado</span>
+                      <span>Ver site</span>
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
 
@@ -360,7 +361,7 @@ export default function PortfolioSection() {
                         className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-semibold text-white flex items-center justify-center gap-1.5"
                       >
                         <Github className="w-3.5 h-3.5" />
-                        <span>GitHub</span>
+                        <span>Ver código</span>
                       </a>
                     )}
                   </div>
