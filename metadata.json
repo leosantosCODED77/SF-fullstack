@@ -1,0 +1,8 @@
+{
+  "name": "SF Full Stack | Desenvolvimento Web Premium",
+  "description": "Landing page oficial da SF Full Stack. Criação de landing pages de alta conversão, sites institucionais, e-commerces, cardápios digitais e portfólios profissionais.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
