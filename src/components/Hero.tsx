@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { siteConfig, getWhatsAppUrl } from '../data/siteConfig';
-import { portfolioLandingTechImg } from '../data/catalog';
+import portfolioLandingTechImg from '../assets/images/portfolio_landing_tech_1793268769040.jpg';
 import { MessageSquare, ArrowRight, ShieldCheck, Zap, Sparkles, CheckCircle2 } from 'lucide-react';
 
 interface HeroProps {
