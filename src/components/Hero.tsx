@@ -75,7 +75,7 @@ export default function Hero({ onOpenSimulator, onOpenBriefing }: HeroProps) {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs text-slate-400 border-t border-slate-800/80 pt-6 w-full">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-slate-300 shrink-0" />
-                <span>Landing Pages a partir de R$ 790</span>
+                <span>Landing Pages a partir de R$ 700</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-slate-300 shrink-0" />
@@ -102,11 +102,11 @@ export default function Hero({ onOpenSimulator, onOpenBriefing }: HeroProps) {
                 {/* Visual Header */}
                 <div className="flex items-center justify-between border-b border-slate-800 pb-5 mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl overflow-hidden border border-slate-700 bg-slate-950 flex items-center justify-center p-0.5">
+                    <div className="w-12 h-12 rounded-xl overflow-hidden border border-slate-700 bg-black flex items-center justify-center p-0.5">
                       <img 
                         src={siteConfig.logoPath} 
                         alt="SF Full Stack Logo" 
-                        className="w-full h-full object-cover scale-150"
+                        className="w-full h-full object-contain p-0.5"
                       />
                     </div>
                     <div>

@@ -3,16 +3,16 @@ import { siteConfig } from '../data/siteConfig';
 
 export const serviceLabels: Record<ServiceBriefingType, string> = {
   'landing-page': 'Landing Page de Alta Conversão',
-  'site-institucional': 'Site Institucional',
+  'site-institucional': 'Site Institucional Completo',
   'loja-virtual': 'Lojas e Catálogos Virtuais',
-  'portfolio-profissional': 'Portfólio Profissional',
+  'portfolio-profissional': 'Landing Page Simples',
 };
 
 export const serviceBasePrices: Record<ServiceBriefingType, string> = {
-  'landing-page': 'A partir de R$ 790,00',
-  'site-institucional': 'A partir de R$ 1.300,00',
-  'loja-virtual': 'A partir de R$ 2.000,00',
-  'portfolio-profissional': 'A partir de R$ 800,00',
+  'landing-page': 'A partir de R$ 900,00',
+  'site-institucional': 'A partir de R$ 1.250,00',
+  'loja-virtual': 'A partir de R$ 1.500,00',
+  'portfolio-profissional': 'A partir de R$ 700,00',
 };
 
 export function formatBriefingMessage(state: BriefingState): string {

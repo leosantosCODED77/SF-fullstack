@@ -1,3 +1,5 @@
+import sfLogoImg from '../assets/images/sf_logo.png';
+
 export interface SiteConfig {
   name: string;
   brandTagline: string;
@@ -57,7 +59,7 @@ export const siteConfig: SiteConfig = {
     directUrl: "https://ig.me/m/leo_offensive77",
   },
   preferredChannel: "whatsapp",
-  logoPath: "/assets/aistudio/Grade_de_logos_SF_Full_Stack_em_destaque_5fae947b.png",
+  logoPath: sfLogoImg,
   guarantees: [
     {
       title: "100% Código Autoral & Limpo",

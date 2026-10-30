@@ -198,30 +198,30 @@ export default function BriefingModal({ isOpen, onClose, initialService }: Brief
     {
       id: 'landing-page',
       name: 'Landing Page de Alta Conversão',
-      price: 'A partir de R$ 790,00',
+      price: 'A partir de R$ 900,00',
       badge: 'Mais Procurado',
       description: 'Página única focada em converter visitantes em vendas e contatos diretos no WhatsApp.',
     },
     {
       id: 'site-institucional',
       name: 'Site Institucional Completo',
-      price: 'A partir de R$ 1.300,00',
+      price: 'A partir de R$ 1.250,00',
       badge: 'Para Empresas',
       description: 'Estrutura institucional completa com história, catálogo de serviços e autoridade de marca.',
     },
     {
       id: 'loja-virtual',
       name: 'Lojas e Catálogos Virtuais',
-      price: 'A partir de R$ 2.000,00',
+      price: 'A partir de R$ 1.500,00',
       badge: 'Vendas Online',
       description: 'Catálogo dinâmico de produtos com pedidos no WhatsApp ou loja com checkout online.',
     },
     {
       id: 'portfolio-profissional',
-      name: 'Portfólio Profissional',
-      price: 'A partir de R$ 800,00',
-      badge: 'Destaque Pessoal',
-      description: 'Apresentação de autoridade para profissionais, designers, arquitetos e criadores.',
+      name: 'Landing Page Simples',
+      price: 'A partir de R$ 700,00',
+      badge: 'Essencial',
+      description: 'Página direta e objetiva para apresentar seus serviços essenciais e captar clientes.',
     },
   ];
 
@@ -1242,12 +1242,12 @@ export default function BriefingModal({ isOpen, onClose, initialService }: Brief
                 </div>
               )}
 
-              {/* SERVIÇO 4 — PORTFÓLIO PROFISSIONAL */}
+              {/* SERVIÇO 4 — LANDING PAGE SIMPLES */}
               {state.serviceType === 'portfolio-profissional' && (
                 <div className="space-y-5">
                   <div className="p-5 sm:p-6 rounded-2xl bg-slate-950/70 border border-slate-800 space-y-4">
                     <div className="text-xs font-bold text-slate-200 uppercase tracking-wider">
-                      Obrigatórias para Portfólio Profissional
+                      Obrigatórias para Landing Page Simples
                     </div>
 
                     <div>
@@ -1304,7 +1304,7 @@ export default function BriefingModal({ isOpen, onClose, initialService }: Brief
 
                   <div className="p-5 sm:p-6 rounded-2xl bg-slate-950/40 border border-slate-800/80 space-y-4">
                     <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                      Opcionais para Portfólio
+                      Opcionais para Landing Page Simples
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

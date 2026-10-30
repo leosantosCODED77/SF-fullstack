@@ -19,11 +19,11 @@ export default function Footer({ onOpenInstagram }: FooterProps) {
           {/* Brand Col */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg overflow-hidden border border-slate-700 bg-slate-900 flex items-center justify-center p-0.5">
+              <div className="w-10 h-10 rounded-lg overflow-hidden border border-slate-700 bg-black flex items-center justify-center p-0.5">
                 <img
                   src={siteConfig.logoPath}
                   alt="SF Full Stack"
-                  className="w-full h-full object-cover scale-150"
+                  className="w-full h-full object-contain p-0.5"
                 />
               </div>
               <div>
@@ -107,24 +107,24 @@ export default function Footer({ onOpenInstagram }: FooterProps) {
             </h4>
             <ul className="space-y-2 text-xs">
               <li className="flex items-center justify-between">
+                <span>Landing Page Simples</span>
+                <span className="font-mono text-slate-200 font-medium">R$ 700,00</span>
+              </li>
+              <li className="flex items-center justify-between">
+                <span>Cardápio Interativo</span>
+                <span className="font-mono text-slate-200 font-medium">R$ 800,00</span>
+              </li>
+              <li className="flex items-center justify-between">
                 <span>Landing Page de Alta Conversão</span>
-                <span className="font-mono text-slate-200 font-medium">R$ 790,00</span>
+                <span className="font-mono text-slate-200 font-medium">R$ 900,00</span>
               </li>
               <li className="flex items-center justify-between">
                 <span>Site Institucional Completo</span>
-                <span className="font-mono text-slate-200 font-medium">R$ 1.300,00</span>
+                <span className="font-mono text-slate-200 font-medium">R$ 1.250,00</span>
               </li>
               <li className="flex items-center justify-between">
-                <span>Loja Virtual / E-commerce</span>
-                <span className="font-mono text-slate-200 font-medium">R$ 2.000,00</span>
-              </li>
-              <li className="flex items-center justify-between">
-                <span>Cardápio Digital Interativo</span>
-                <span className="font-mono text-slate-200 font-medium">R$ 750,00</span>
-              </li>
-              <li className="flex items-center justify-between">
-                <span>Portfólio Profissional</span>
-                <span className="font-mono text-slate-200 font-medium">R$ 800,00</span>
+                <span>Lojas e Catálogos Virtuais</span>
+                <span className="font-mono text-slate-200 font-medium">R$ 1.500,00</span>
               </li>
             </ul>
           </div>

@@ -39,11 +39,11 @@ export default function AboutSection({ onOpenInstagram }: AboutSectionProps) {
 
               {/* Developer Profile Header */}
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-slate-500 bg-slate-950 flex items-center justify-center p-1 shadow-md shrink-0">
+                <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-slate-500 bg-black flex items-center justify-center p-1 shadow-md shrink-0">
                   <img
                     src={siteConfig.logoPath}
                     alt="SF Full Stack Logo"
-                    className="w-full h-full object-cover scale-150"
+                    className="w-full h-full object-contain p-0.5"
                   />
                 </div>
                 <div>
@@ -143,7 +143,7 @@ export default function AboutSection({ onOpenInstagram }: AboutSectionProps) {
                 Diferente de agências tradicionais que terceirizam o desenvolvimento ou usam construtores visuais lentos e cheios de bugs, aqui cada projeto é codificado com tecnologia moderna. O resultado? Carregamento em frações de segundo, visual premium prata metálico e navegação sem atrito no smartphone.
               </p>
               <p>
-                Seja para uma landing page de venda direta (a partir de R$ 790), um site institucional que transmita autoridade (R$ 1.300) ou uma loja virtual ágil (R$ 2.000), você tem contato direto, prazos garantidos e suporte próximo.
+                Seja para uma landing page (a partir de R$ 700), um site institucional que transmita autoridade (a partir de R$ 1.250) ou uma loja virtual ágil (a partir de R$ 1.500), você tem contato direto, prazos garantidos e suporte próximo.
               </p>
             </div>
 
