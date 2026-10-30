@@ -10,7 +10,7 @@ interface BudgetSimulatorProps {
 
 export default function BudgetSimulator({ initialServiceId = 'landing-page', onOpenInstagramWithText }: BudgetSimulatorProps) {
   const [selectedServiceId, setSelectedServiceId] = useState<string>(initialServiceId);
-  const [selectedAddonIds, setSelectedAddonIds] = useState<string[]>(['rush-delivery']);
+  const [selectedAddonIds, setSelectedAddonIds] = useState<string[]>([]);
   const [includeSupportPlan, setIncludeSupportPlan] = useState<boolean>(false);
   const [clientName, setClientName] = useState<string>('');
   const [businessSegment, setBusinessSegment] = useState<string>('');

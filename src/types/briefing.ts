@@ -2,6 +2,7 @@ export type ServiceBriefingType =
   | 'landing-page' 
   | 'site-institucional' 
   | 'loja-virtual' 
+  | 'cardapio-digital'
   | 'portfolio-profissional';
 
 export interface GeneralBriefingData {
@@ -87,6 +88,20 @@ export interface PortfolioBriefingData {
   hasProfessionalPhotos: string;
 }
 
+export interface CardapioBriefingData {
+  // Obrigatórias
+  establishmentType: string;
+  categoriesList: string;
+  estimatedItemsCount: string;
+  orderViaWhatsapp: string;
+
+  // Opcionais
+  hasOptionalsAddons: string;
+  hasQrCodePrint: string;
+  hasProductPhotos: string;
+  additionalMenuNotes: string;
+}
+
 export interface BriefingState {
   serviceType: ServiceBriefingType;
   general: GeneralBriefingData;
@@ -94,6 +109,7 @@ export interface BriefingState {
   institutional: InstitutionalBriefingData;
   ecommerce: EcommerceBriefingData;
   portfolio: PortfolioBriefingData;
+  cardapio: CardapioBriefingData;
   dataConsent: boolean;
 }
 
@@ -159,6 +175,16 @@ export const initialBriefingState: BriefingState = {
     portfolioTone: 'Moderno e Criativo',
     resumeDownload: '',
     hasProfessionalPhotos: '',
+  },
+  cardapio: {
+    establishmentType: '',
+    categoriesList: '',
+    estimatedItemsCount: '',
+    orderViaWhatsapp: 'Sim, receber pedidos prontos no WhatsApp',
+    hasOptionalsAddons: '',
+    hasQrCodePrint: 'Sim, preciso de QR Code para mesas e balcão',
+    hasProductPhotos: '',
+    additionalMenuNotes: '',
   },
   dataConsent: false,
 };

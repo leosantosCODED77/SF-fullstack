@@ -94,7 +94,7 @@ export default function BriefingModal({ isOpen, onClose, initialService }: Brief
 
   const validateStep3 = (): boolean => {
     const newErrors: Record<string, string> = {};
-    const { serviceType, landing, institutional, ecommerce, portfolio } = state;
+    const { serviceType, landing, institutional, ecommerce, portfolio, cardapio } = state;
 
     if (serviceType === 'landing-page') {
       if (!landing.offerName.trim()) {
@@ -138,6 +138,19 @@ export default function BriefingModal({ isOpen, onClose, initialService }: Brief
       }
       if (!portfolio.projectsToShow.trim()) {
         newErrors.projectsToShow = 'Informe quais tipos de trabalhos ou projetos deseja apresentar.';
+      }
+    } else if (serviceType === 'cardapio-digital') {
+      if (!cardapio.establishmentType.trim()) {
+        newErrors.establishmentType = 'Informe o tipo de estabelecimento (ex: Pizzaria, Hamburgueria, Cafeteria...).';
+      }
+      if (!cardapio.categoriesList.trim()) {
+        newErrors.categoriesList = 'Informe as principais categorias do seu cardápio.';
+      }
+      if (!cardapio.estimatedItemsCount.trim()) {
+        newErrors.estimatedItemsCount = 'Informe a quantidade aproximada de pratos ou itens.';
+      }
+      if (!cardapio.orderViaWhatsapp.trim()) {
+        newErrors.orderViaWhatsapp = 'Selecione se deseja receber os pedidos formatados no WhatsApp.';
       }
     }
 
@@ -215,6 +228,13 @@ export default function BriefingModal({ isOpen, onClose, initialService }: Brief
       price: 'A partir de R$ 1.500,00',
       badge: 'Vendas Online',
       description: 'Catálogo dinâmico de produtos com pedidos no WhatsApp ou loja com checkout online.',
+    },
+    {
+      id: 'cardapio-digital',
+      name: 'Cardápio Interativo',
+      price: 'A partir de R$ 800,00',
+      badge: 'Pronto para Pedidos',
+      description: 'Cardápio digital moderno com categorias, adicionais, QR Code e envio de pedidos no WhatsApp.',
     },
     {
       id: 'portfolio-profissional',
@@ -301,7 +321,7 @@ export default function BriefingModal({ isOpen, onClose, initialService }: Brief
                   Qual serviço você deseja contratar para o seu projeto?
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  Escolha uma das 4 soluções abaixo. Os valores apresentados são valores base de referência (*a partir deste preço*), podendo variar conforme o número de páginas e complexidade desejada.
+                  Escolha uma das soluções abaixo. Os valores apresentados são valores base de referência (*a partir deste preço*), podendo variar conforme a complexidade e necessidades específicas do seu projeto.
                 </p>
               </div>
 
@@ -1344,6 +1364,187 @@ export default function BriefingModal({ isOpen, onClose, initialService }: Brief
                 </div>
               )}
 
+              {/* SERVIÇO 5 — CARDÁPIO INTERATIVO */}
+              {state.serviceType === 'cardapio-digital' && (
+                <div className="space-y-5">
+                  <div className="p-5 sm:p-6 rounded-2xl bg-slate-950/70 border border-slate-800 space-y-4">
+                    <div className="text-xs font-bold text-slate-200 uppercase tracking-wider">
+                      Obrigatórias para Cardápio Interativo
+                    </div>
+
+                    {/* 1. Tipo de Estabelecimento */}
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                        1. Qual é o tipo do seu estabelecimento gastronômico? <span className="text-rose-400">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        value={state.cardapio.establishmentType}
+                        onChange={(e) => setState(prev => ({
+                          ...prev,
+                          cardapio: { ...prev.cardapio, establishmentType: e.target.value }
+                        }))}
+                        placeholder="Ex: Pizzaria Forno a Lenha, Hamburgueria Artesanal, Cafeteria, Bistrô, Restaurante, Bar..."
+                        className="w-full px-4 py-3 rounded-xl bg-[#0E121B] border border-slate-800 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-slate-400"
+                      />
+                      {errors.establishmentType && <p className="text-xs text-rose-400 mt-1">{errors.establishmentType}</p>}
+                    </div>
+
+                    {/* 2. Categorias do Cardápio */}
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                        2. Quais categorias principais deseja incluir no cardápio? <span className="text-rose-400">*</span>
+                      </label>
+                      <textarea
+                        rows={2}
+                        value={state.cardapio.categoriesList}
+                        onChange={(e) => setState(prev => ({
+                          ...prev,
+                          cardapio: { ...prev.cardapio, categoriesList: e.target.value }
+                        }))}
+                        placeholder="Ex: Pizzas Tradicionais, Pizzas Especiais, Porções, Hambúrgueres, Bebidas, Sobremesas, Combos..."
+                        className="w-full px-4 py-3 rounded-xl bg-[#0E121B] border border-slate-800 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-slate-400"
+                      />
+                      {errors.categoriesList && <p className="text-xs text-rose-400 mt-1">{errors.categoriesList}</p>}
+                    </div>
+
+                    {/* 3. Quantidade Estimada de Itens */}
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                        3. Quantos itens ou pratos aproximadamente o cardápio terá? <span className="text-rose-400">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        value={state.cardapio.estimatedItemsCount}
+                        onChange={(e) => setState(prev => ({
+                          ...prev,
+                          cardapio: { ...prev.cardapio, estimatedItemsCount: e.target.value }
+                        }))}
+                        placeholder="Ex: Cerca de 30 a 50 itens cadastrados"
+                        className="w-full px-4 py-3 rounded-xl bg-[#0E121B] border border-slate-800 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-slate-400"
+                      />
+                      {errors.estimatedItemsCount && <p className="text-xs text-rose-400 mt-1">{errors.estimatedItemsCount}</p>}
+                    </div>
+
+                    {/* 4. Recebimento de Pedidos no WhatsApp */}
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-300 mb-2">
+                        4. Como deseja o recebimento de pedidos? <span className="text-rose-400">*</span>
+                      </label>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {[
+                          { val: 'Sim, cliente monta o pedido e envia formatado no WhatsApp', label: 'Envio direto no WhatsApp', desc: 'Carrinho interativo com cálculo automático do total' },
+                          { val: 'Apenas cardápio digital informativo (sem carrinho)', label: 'Apenas consulta', desc: 'Exibição de pratos e preços sem montagem de pedido' },
+                        ].map((opt) => (
+                          <button
+                            key={opt.val}
+                            type="button"
+                            onClick={() => setState(prev => ({
+                              ...prev,
+                              cardapio: { ...prev.cardapio, orderViaWhatsapp: opt.val }
+                            }))}
+                            className={`p-3.5 rounded-xl border text-left transition-all ${
+                              state.cardapio.orderViaWhatsapp === opt.val
+                                ? 'bg-slate-800 border-slate-300 text-white ring-1 ring-slate-300/40'
+                                : 'bg-[#0E121B] border-slate-800 text-slate-400 hover:border-slate-700'
+                            }`}
+                          >
+                            <div className="font-bold text-xs mb-1 text-slate-200">{opt.label}</div>
+                            <div className="text-[11px] text-slate-400">{opt.desc}</div>
+                          </button>
+                        ))}
+                      </div>
+                      {errors.orderViaWhatsapp && <p className="text-xs text-rose-400 mt-1">{errors.orderViaWhatsapp}</p>}
+                    </div>
+                  </div>
+
+                  {/* Opcionais para Cardápio Interativo */}
+                  <div className="p-5 sm:p-6 rounded-2xl bg-slate-950/40 border border-slate-800/80 space-y-4">
+                    <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                      Opcionais para Cardápio Interativo
+                    </div>
+
+                    <div className="space-y-4">
+                      {/* Opcional: Adicionais e Personalização de Pratos */}
+                      <div>
+                        <label className="block text-xs font-medium text-slate-300 mb-1">
+                          5. Haverá seleção de adicionais ou opcionais nos pratos?
+                        </label>
+                        <input
+                          type="text"
+                          value={state.cardapio.hasOptionalsAddons}
+                          onChange={(e) => setState(prev => ({
+                            ...prev,
+                            cardapio: { ...prev.cardapio, hasOptionalsAddons: e.target.value }
+                          }))}
+                          placeholder="Ex: Borda recheada, ponto da carne, molhos extras, adicionais de bacon/queijo..."
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-[#0E121B] border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-slate-400"
+                        />
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {/* Opcional: QR Code para mesas */}
+                        <div>
+                          <label className="block text-xs font-medium text-slate-300 mb-1">
+                            6. Precisa de QR Code exclusivo para mesas/balcão?
+                          </label>
+                          <select
+                            value={state.cardapio.hasQrCodePrint}
+                            onChange={(e) => setState(prev => ({
+                              ...prev,
+                              cardapio: { ...prev.cardapio, hasQrCodePrint: e.target.value }
+                            }))}
+                            className="w-full px-3.5 py-2.5 rounded-xl bg-[#0E121B] border border-slate-800 text-xs text-white focus:outline-none focus:border-slate-400"
+                          >
+                            <option value="Sim, preciso de QR Code para impressão em alta resolução">Sim, em alta resolução para impressão</option>
+                            <option value="Apenas link na bio e redes sociais">Apenas link digital para bio</option>
+                            <option value="Ambos (QR Code impresso e link digital)">Ambos (QR Code e link digital)</option>
+                          </select>
+                        </div>
+
+                        {/* Opcional: Fotos dos Produtos */}
+                        <div>
+                          <label className="block text-xs font-medium text-slate-300 mb-1">
+                            7. Como estão as fotos dos produtos?
+                          </label>
+                          <select
+                            value={state.cardapio.hasProductPhotos}
+                            onChange={(e) => setState(prev => ({
+                              ...prev,
+                              cardapio: { ...prev.cardapio, hasProductPhotos: e.target.value }
+                            }))}
+                            className="w-full px-3.5 py-2.5 rounded-xl bg-[#0E121B] border border-slate-800 text-xs text-white focus:outline-none focus:border-slate-400"
+                          >
+                            <option value="">Selecione...</option>
+                            <option value="Já possuo fotos reais e profissionais prontas">Já possuo fotos reais prontas</option>
+                            <option value="Possuo fotos simples tiradas no celular">Possuo fotos tiradas no celular</option>
+                            <option value="Vou providenciar fotos durante o projeto">Vou providenciar durante o projeto</option>
+                            <option value="Preciso de fotos/ilustrações providenciadas pela SF">Preciso de apoio com imagens pela SF</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      {/* Opcional: Regras de Entrega / Horários */}
+                      <div>
+                        <label className="block text-xs font-medium text-slate-300 mb-1">
+                          8. Regras de entrega, taxas por bairro ou horários de funcionamento?
+                        </label>
+                        <textarea
+                          rows={2}
+                          value={state.cardapio.additionalMenuNotes}
+                          onChange={(e) => setState(prev => ({
+                            ...prev,
+                            cardapio: { ...prev.cardapio, additionalMenuNotes: e.target.value }
+                          }))}
+                          placeholder="Ex: Entrega de terça a domingo das 18h às 23h30; taxas de R$ 5 a R$ 12 conforme o bairro; retirada no balcão sem taxa..."
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-[#0E121B] border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-slate-400"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
             </div>
           )}
 
@@ -1451,6 +1652,20 @@ export default function BriefingModal({ isOpen, onClose, initialService }: Brief
                       <div><strong className="text-white">Área:</strong> {state.portfolio.professionArea}</div>
                       <div><strong className="text-white">Apresentação:</strong> {state.portfolio.experiencePresentation}</div>
                       <div><strong className="text-white">Projetos:</strong> {state.portfolio.projectsToShow}</div>
+                    </>
+                  )}
+                  {state.serviceType === 'cardapio-digital' && (
+                    <>
+                      <div><strong className="text-white">Estabelecimento:</strong> {state.cardapio.establishmentType}</div>
+                      <div><strong className="text-white">Categorias:</strong> {state.cardapio.categoriesList}</div>
+                      <div><strong className="text-white">Qtd. Estimada:</strong> {state.cardapio.estimatedItemsCount}</div>
+                      <div><strong className="text-white">Pedidos no WhatsApp:</strong> {state.cardapio.orderViaWhatsapp}</div>
+                      {state.cardapio.hasOptionalsAddons && (
+                        <div><strong className="text-white">Adicionais:</strong> {state.cardapio.hasOptionalsAddons}</div>
+                      )}
+                      {state.cardapio.hasQrCodePrint && (
+                        <div><strong className="text-white">QR Code:</strong> {state.cardapio.hasQrCodePrint}</div>
+                      )}
                     </>
                   )}
                 </div>

@@ -79,6 +79,7 @@ export default function ServicesSection({ onSelectForSimulator, onOpenBriefing }
             const briefingType: ServiceBriefingType = 
               service.id === 'site-institucional' ? 'site-institucional' :
               service.id === 'loja-virtual' ? 'loja-virtual' :
+              service.id === 'cardapio-digital' ? 'cardapio-digital' :
               service.id === 'portfolio-profissional' ? 'portfolio-profissional' :
               'landing-page';
             

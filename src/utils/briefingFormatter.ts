@@ -5,6 +5,7 @@ export const serviceLabels: Record<ServiceBriefingType, string> = {
   'landing-page': 'Landing Page de Alta Conversão',
   'site-institucional': 'Site Institucional Completo',
   'loja-virtual': 'Lojas e Catálogos Virtuais',
+  'cardapio-digital': 'Cardápio Interativo',
   'portfolio-profissional': 'Landing Page Simples',
 };
 
@@ -12,11 +13,12 @@ export const serviceBasePrices: Record<ServiceBriefingType, string> = {
   'landing-page': 'A partir de R$ 900,00',
   'site-institucional': 'A partir de R$ 1.250,00',
   'loja-virtual': 'A partir de R$ 1.500,00',
+  'cardapio-digital': 'A partir de R$ 800,00',
   'portfolio-profissional': 'A partir de R$ 700,00',
 };
 
 export function formatBriefingMessage(state: BriefingState): string {
-  const { serviceType, general, landing, institutional, ecommerce, portfolio } = state;
+  const { serviceType, general, landing, institutional, ecommerce, portfolio, cardapio } = state;
 
   const lines: string[] = [];
 
@@ -80,13 +82,23 @@ export function formatBriefingMessage(state: BriefingState): string {
     if (ecommerce.hasOwnPhotos) lines.push(`• *Fotos Próprias:* ${ecommerce.hasOwnPhotos}`);
     lines.push(``);
   } else if (serviceType === 'portfolio-profissional') {
-    lines.push(`💼 *DETALHES DO PORTFÓLIO:*`);
-    lines.push(`• *Profissão / Área:* ${portfolio.professionArea || 'Não informado'}`);
-    lines.push(`• *Como Apresentar Experiência:* ${portfolio.experiencePresentation || 'Não informado'}`);
-    lines.push(`• *Projetos a Apresentar:* ${portfolio.projectsToShow || 'Não informado'}`);
+    lines.push(`💼 *DETALHES DO PROJETO:*`);
+    lines.push(`• *Profissão / Atuação:* ${portfolio.professionArea || 'Não informado'}`);
+    lines.push(`• *Apresentação da Experiência:* ${portfolio.experiencePresentation || 'Não informado'}`);
+    lines.push(`• *Serviços / Projetos:* ${portfolio.projectsToShow || 'Não informado'}`);
     if (portfolio.academicCursos) lines.push(`• *Formação / Cursos:* ${portfolio.academicCursos}`);
     if (portfolio.portfolioTone) lines.push(`• *Tom / Estilo:* ${portfolio.portfolioTone}`);
-    if (portfolio.resumeDownload) lines.push(`• *Currículo para Download:* ${portfolio.resumeDownload}`);
+    lines.push(``);
+  } else if (serviceType === 'cardapio-digital') {
+    lines.push(`🍕 *DETALHES DO CARDÁPIO INTERATIVO:*`);
+    lines.push(`• *Estabelecimento:* ${cardapio.establishmentType || 'Não informado'}`);
+    lines.push(`• *Categorias do Cardápio:* ${cardapio.categoriesList || 'Não informado'}`);
+    lines.push(`• *Qtd. Estimada de Itens:* ${cardapio.estimatedItemsCount || 'Não informado'}`);
+    lines.push(`• *Pedidos no WhatsApp:* ${cardapio.orderViaWhatsapp || 'Sim'}`);
+    if (cardapio.hasOptionalsAddons) lines.push(`• *Adicionais / Opcionais:* ${cardapio.hasOptionalsAddons}`);
+    if (cardapio.hasQrCodePrint) lines.push(`• *QR Code p/ Balcão/Mesas:* ${cardapio.hasQrCodePrint}`);
+    if (cardapio.hasProductPhotos) lines.push(`• *Fotos dos Produtos:* ${cardapio.hasProductPhotos}`);
+    if (cardapio.additionalMenuNotes) lines.push(`• *Horários / Regras:* ${cardapio.additionalMenuNotes}`);
     lines.push(``);
   }
 
