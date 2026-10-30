@@ -103,6 +103,16 @@ export default function PortfolioSection() {
                     </div>
                   )}
 
+                  {/* Badge de Projeto Real / Destaque */}
+                  {project.badge && (
+                    <div className="absolute top-4 right-4">
+                      <span className="inline-flex items-center gap-1.5 text-[11px] font-medium tracking-wide px-2.5 py-1 rounded bg-black/85 text-emerald-300 backdrop-blur-md border border-emerald-500/30 shadow-sm">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        {project.badge}
+                      </span>
+                    </div>
+                  )}
+
                   {/* Client Type / Tagline tag */}
                   {(project.clientType || project.tagline) && (
                     <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs text-slate-300">
@@ -255,13 +265,19 @@ export default function PortfolioSection() {
               </button>
 
               {selectedProject.categoryLabel && (
-                <div className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                <div className="inline-flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
                   <span>{selectedProject.categoryLabel}</span>
                   {selectedProject.clientType && (
                     <>
                       <span aria-hidden="true">·</span>
                       <span>{selectedProject.clientType}</span>
                     </>
+                  )}
+                  {selectedProject.badge && (
+                    <span className="inline-flex items-center gap-1.5 normal-case font-medium text-[11px] px-2 py-0.5 rounded bg-black/70 text-emerald-300 border border-emerald-500/30">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      {selectedProject.badge}
+                    </span>
                   )}
                 </div>
               )}

@@ -37,6 +37,7 @@ export interface PortfolioProject {
   githubUrl?: string;
   category?: 'landing' | 'institutional' | 'ecommerce' | 'menu' | 'portfolio' | string;
   categoryLabel?: string;
+  badge?: string;
   clientType?: string;
   tagline?: string;
   metrics?: {
@@ -186,23 +187,24 @@ export const servicesCatalog: ServiceItem[] = [
 
 export const portfolioProjects: PortfolioProject[] = [
   {
-    id: "advogado",
-    title: "Advogado — Dr. Ricardo Silva",
-    description: "Landing page de alta conversão para advocacia e defesa jurídica estratégica patrimonial e empresarial, com agendamento de consulta, prova social e contato direto via WhatsApp.",
-    image: "/assets/projects/project1-advogado.png",
-    liveUrl: "https://advocacia6767.netlify.app/",
-    githubUrl: "https://github.com/leosantosCODED77/LP-advocacia",
-    category: "landing",
-    categoryLabel: "Landing Page",
-    clientType: "Advocacia & Defesa Jurídica",
-    tagline: "Defesa jurídica rigorosa e estratégica para proteger patrimônio",
+    id: "aguaislife",
+    title: "Água is life — Distribuidora Mineral",
+    description: "Website desenvolvido e implementado para uma empresa real, atualmente em operação. O projeto funciona como um canal digital de apresentação dos serviços e captação de clientes, já sendo utilizado comercialmente e gerando contatos de potenciais consumidores.",
+    image: "/assets/projects/project3-aguaislife.png",
+    liveUrl: "https://aguaislife.netlify.app/",
+    githubUrl: "https://github.com/leosantosCODED77/aguaislife",
+    category: "ecommerce",
+    categoryLabel: "Lojas e Catálogos",
+    badge: "Projeto real • Em produção",
+    clientType: "Distribuidora Mineral & Corporativo B2B",
+    tagline: "Sua empresa sem falta de água com suprimento garantido",
     metrics: [
-      { label: "Tempo de Carga", value: "0.7s" },
-      { label: "Mobile-First", value: "100%" },
-      { label: "Conversão Direta", value: "WhatsApp" },
+      { label: "Catálogo", value: "20L & Descartáveis" },
+      { label: "Cotação B2B", value: "WhatsApp" },
+      { label: "Velocidade", value: "Ultrarrápida" },
     ],
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Motion"],
-    liveFeatures: ["Agendamento de consulta", "Prova social e autoridade", "Integração WhatsApp", "Design executivo"],
+    techStack: ["React", "TypeScript", "Tailwind CSS", "WhatsApp API"],
+    liveFeatures: ["Galeria de produtos", "Direcionamento B2B", "Botão WhatsApp flutuante", "Identidade visual oficial"],
     featured: true,
   },
   {
@@ -226,23 +228,23 @@ export const portfolioProjects: PortfolioProject[] = [
     featured: true,
   },
   {
-    id: "aguaislife",
-    title: "Água is life — Distribuidora Mineral",
-    description: "Catálogo virtual e plataforma corporativa para distribuidora de água mineral e suprimentos B2B, com apresentação completa de produtos descartáveis e retornáveis e pedidos via WhatsApp.",
-    image: "/assets/projects/project3-aguaislife.png",
-    liveUrl: "https://aguaislife.netlify.app/",
-    githubUrl: "https://github.com/leosantosCODED77/Empresa-aguaislife",
-    category: "ecommerce",
-    categoryLabel: "Lojas e Catálogos",
-    clientType: "Distribuidora Mineral & Corporativo B2B",
-    tagline: "Sua empresa sem falta de água com suprimento garantido",
+    id: "advogado",
+    title: "Advogado — Dr. Ricardo Silva",
+    description: "Landing page de alta conversão para advocacia e defesa jurídica estratégica patrimonial e empresarial, com agendamento de consulta, prova social e contato direto via WhatsApp.",
+    image: "/assets/projects/project1-advogado.png",
+    liveUrl: "https://advocacia6767.netlify.app/",
+    githubUrl: "https://github.com/leosantosCODED77/LP-advocacia",
+    category: "landing",
+    categoryLabel: "Landing Page",
+    clientType: "Advocacia & Defesa Jurídica",
+    tagline: "Defesa jurídica rigorosa e estratégica para proteger patrimônio",
     metrics: [
-      { label: "Catálogo", value: "20L & Descartáveis" },
-      { label: "Cotação B2B", value: "WhatsApp" },
-      { label: "Velocidade", value: "Ultrarrápida" },
+      { label: "Tempo de Carga", value: "0.7s" },
+      { label: "Mobile-First", value: "100%" },
+      { label: "Conversão Direta", value: "WhatsApp" },
     ],
-    techStack: ["React", "TypeScript", "Tailwind CSS", "WhatsApp API"],
-    liveFeatures: ["Galeria de produtos", "Direcionamento B2B", "Botão WhatsApp flutuante", "Identidade visual oficial"],
+    techStack: ["React", "TypeScript", "Tailwind CSS", "Motion"],
+    liveFeatures: ["Agendamento de consulta", "Prova social e autoridade", "Integração WhatsApp", "Design executivo"],
     featured: true,
   },
   {

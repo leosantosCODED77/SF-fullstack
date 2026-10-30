@@ -76,19 +76,19 @@ export default function App() {
           onOpenBriefing={() => handleOpenBriefing()}
         />
 
-        {/* 2. Por que investir na presença digital da sua empresa? (Seção Institucional & Conversão) */}
+        {/* 2. Nossos Projetos (Portfólio com Ver Projeto e Código-Fonte) */}
+        <PortfolioSection />
+
+        {/* 3. Por que investir na presença digital da sua empresa? (Seção Institucional & Conversão) */}
         <WhyInvestSection
           onOpenBriefing={() => handleOpenBriefing()}
         />
 
-        {/* 3. Serviços Especializados com detalhamento, 'A partir de', e botão Solicitar Orçamento */}
+        {/* 4. Serviços Especializados com detalhamento, 'A partir de', e botão Solicitar Orçamento */}
         <ServicesSection
           onSelectForSimulator={(serviceId) => handleScrollToSimulator(serviceId)}
           onOpenBriefing={(serviceId) => handleOpenBriefing(serviceId)}
         />
-
-        {/* 4. Nossos Projetos (Portfólio com Ver Projeto e Código-Fonte) */}
-        <PortfolioSection />
 
         {/* 5. Simulador Interativo com Adicionais (Entrega Expressa 48h R$ 120 e Redação/Copy R$ 150) */}
         <BudgetSimulator
