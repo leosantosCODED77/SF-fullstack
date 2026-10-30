@@ -190,7 +190,7 @@ export const portfolioProjects: PortfolioProject[] = [
     id: "aguaislife",
     title: "Água is life — Distribuidora Mineral",
     description: "Website desenvolvido e implementado para uma empresa real, atualmente em operação. O projeto funciona como um canal digital de apresentação dos serviços e captação de clientes, já sendo utilizado comercialmente e gerando contatos de potenciais consumidores.",
-    image: "/assets/projects/project3-aguaislife.png",
+    image: "/assets/projects/agua_profile.jpeg",
     liveUrl: "https://aguaislife.netlify.app/",
     githubUrl: "https://github.com/leosantosCODED77/aguaislife",
     category: "ecommerce",
