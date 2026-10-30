@@ -10,11 +10,11 @@ export const serviceLabels: Record<ServiceBriefingType, string> = {
 };
 
 export const serviceBasePrices: Record<ServiceBriefingType, string> = {
-  'landing-page': 'A partir de R$ 900,00',
-  'site-institucional': 'A partir de R$ 1.250,00',
-  'loja-virtual': 'A partir de R$ 1.500,00',
-  'cardapio-digital': 'A partir de R$ 800,00',
-  'portfolio-profissional': 'A partir de R$ 700,00',
+  'landing-page': 'A partir de R$ 700,00',
+  'site-institucional': 'A partir de R$ 1.000,00',
+  'loja-virtual': 'A partir de R$ 1.200,00',
+  'cardapio-digital': 'A partir de R$ 600,00',
+  'portfolio-profissional': 'A partir de R$ 500,00',
 };
 
 export function formatBriefingMessage(state: BriefingState): string {

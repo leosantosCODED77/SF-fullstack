@@ -75,7 +75,7 @@ export default function Hero({ onOpenSimulator, onOpenBriefing }: HeroProps) {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs text-slate-400 border-t border-slate-800/80 pt-6 w-full">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-slate-300 shrink-0" />
-                <span>Landing Pages a partir de R$ 700</span>
+                <span>Landing Pages a partir de R$ 500</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-slate-300 shrink-0" />

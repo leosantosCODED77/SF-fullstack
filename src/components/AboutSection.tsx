@@ -143,7 +143,7 @@ export default function AboutSection({ onOpenInstagram }: AboutSectionProps) {
                 Diferente de agências tradicionais que terceirizam o desenvolvimento ou usam construtores visuais lentos e cheios de bugs, aqui cada projeto é codificado com tecnologia moderna. O resultado? Carregamento em frações de segundo, visual premium prata metálico e navegação sem atrito no smartphone.
               </p>
               <p>
-                Seja para uma landing page (a partir de R$ 700), um site institucional que transmita autoridade (a partir de R$ 1.250) ou uma loja virtual ágil (a partir de R$ 1.500), você tem contato direto, prazos garantidos e suporte próximo.
+                Seja para uma landing page (a partir de R$ 500), um site institucional que transmita autoridade (a partir de R$ 1.000) ou uma loja virtual ágil (a partir de R$ 1.200), você tem contato direto, prazos garantidos e suporte próximo.
               </p>
             </div>
 

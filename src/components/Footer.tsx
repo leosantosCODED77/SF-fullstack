@@ -108,23 +108,23 @@ export default function Footer({ onOpenInstagram }: FooterProps) {
             <ul className="space-y-2 text-xs">
               <li className="flex items-center justify-between">
                 <span>Landing Page Simples</span>
-                <span className="font-mono text-slate-200 font-medium">R$ 700,00</span>
+                <span className="font-mono text-slate-200 font-medium">A partir de R$ 500,00</span>
               </li>
               <li className="flex items-center justify-between">
                 <span>Cardápio Interativo</span>
-                <span className="font-mono text-slate-200 font-medium">R$ 800,00</span>
+                <span className="font-mono text-slate-200 font-medium">A partir de R$ 600,00</span>
               </li>
               <li className="flex items-center justify-between">
                 <span>Landing Page de Alta Conversão</span>
-                <span className="font-mono text-slate-200 font-medium">R$ 900,00</span>
+                <span className="font-mono text-slate-200 font-medium">A partir de R$ 700,00</span>
               </li>
               <li className="flex items-center justify-between">
                 <span>Site Institucional Completo</span>
-                <span className="font-mono text-slate-200 font-medium">R$ 1.250,00</span>
+                <span className="font-mono text-slate-200 font-medium">A partir de R$ 1.000,00</span>
               </li>
               <li className="flex items-center justify-between">
                 <span>Lojas e Catálogos Virtuais</span>
-                <span className="font-mono text-slate-200 font-medium">R$ 1.500,00</span>
+                <span className="font-mono text-slate-200 font-medium">A partir de R$ 1.200,00</span>
               </li>
             </ul>
           </div>
