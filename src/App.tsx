@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import WhyInvestSection from './components/WhyInvestSection';
 import ServicesSection from './components/ServicesSection';
+import ServiceBenefitsSection from './components/ServiceBenefitsSection';
 import PortfolioSection from './components/PortfolioSection';
 import BudgetSimulator from './components/BudgetSimulator';
 import MethodologySection from './components/MethodologySection';
@@ -89,6 +90,9 @@ export default function App() {
           onSelectForSimulator={(serviceId) => handleScrollToSimulator(serviceId)}
           onOpenBriefing={(serviceId) => handleOpenBriefing(serviceId)}
         />
+
+        {/* Benefícios e formas de uso dos serviços */}
+        <ServiceBenefitsSection />
 
         {/* 5. Simulador Interativo com Adicionais (Entrega Expressa 48h R$ 120 e Redação/Copy R$ 150) */}
         <BudgetSimulator
