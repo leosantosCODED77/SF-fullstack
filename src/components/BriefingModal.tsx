@@ -453,7 +453,7 @@ export default function BriefingModal({ isOpen, onClose, initialService }: Brief
                       ...prev,
                       general: { ...prev.general, whatsappNumber: e.target.value }
                     }))}
-                    placeholder="Ex: (91) 99153-2935"
+                    placeholder="Ex: (91) 98498-8358"
                     className="w-full px-4 py-3 rounded-xl bg-[#0E121B] border border-slate-800 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-slate-400 transition-colors"
                   />
                   {errors.whatsappNumber && <p className="text-xs text-rose-400 mt-1">{errors.whatsappNumber}</p>}
@@ -563,7 +563,7 @@ export default function BriefingModal({ isOpen, onClose, initialService }: Brief
                           ...prev,
                           general: { ...prev.general, channelWhatsapp: e.target.value }
                         }))}
-                        placeholder={state.general.whatsappNumber || "Ex: (91) 99153-2935"}
+                        placeholder={state.general.whatsappNumber || "Ex: (91) 98498-8358"}
                         className="w-full px-3.5 py-2 rounded-lg bg-[#0E121B] border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-slate-400"
                       />
                     </div>
