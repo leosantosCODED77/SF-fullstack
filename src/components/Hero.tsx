@@ -148,7 +148,7 @@ export default function Hero({ onOpenSimulator, onOpenBriefing }: HeroProps) {
                     <span>Canal de Atendimento</span>
                     <span className="text-emerald-400 font-medium flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span>
-                      WhatsApp (+55 91 99153-2935)
+                      WhatsApp (+55 91 98498-8358)
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-xs text-slate-400">
