@@ -48,30 +48,37 @@ export default function PortfolioSection() {
 
           {/* Interactive filter tabs */}
          
-<div className="flex items-center gap-1.5 p-1 bg-slate-900/90 rounded-xl border border-slate-800 overflow-x-auto no-scrollbar w-full max-w-full min-w-0 md:w-auto md:shrink-0">
 
-            {categories.map((cat) => {
-              const count = cat.id === 'all' 
-                ? portfolioProjects.length 
-                : portfolioProjects.filter(p => p.category === cat.id).length;
-              
-              if (cat.id !== 'all' && count === 0) return null;
+{/* Interactive filter tabs */}
+<div
+  className="w-full max-w-full min-w-0 overflow-x-auto overscroll-x-contain touch-pan-x md:w-auto md:shrink-0"
+  style={{ WebkitOverflowScrolling: 'touch' }}
+>
+  <div className="flex w-max min-w-full items-center gap-1.5 p-1 bg-slate-900/90 rounded-xl border border-slate-800">
+    {categories.map((cat) => {
+      const count = cat.id === 'all'
+        ? portfolioProjects.length
+        : portfolioProjects.filter(p => p.category === cat.id).length;
 
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => setActiveTab(cat.id)}
-                  className={`px-3.5 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap transition-all duration-200 ${
-                    activeTab === cat.id
-                      ? 'bg-slate-200 text-slate-900 font-bold shadow-sm'
-                      : 'text-slate-400 hover:text-white'
-                  }`}
-                >
-                  {cat.label} ({count})
-                </button>
-              );
-            })}
-          </div>
+      if (cat.id !== 'all' && count === 0) return null;
+
+      return (
+        <button
+          key={cat.id}
+          onClick={() => setActiveTab(cat.id)}
+          className={`shrink-0 px-3.5 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap transition-all duration-200 ${
+            activeTab === cat.id
+              ? 'bg-slate-200 text-slate-900 font-bold shadow-sm'
+              : 'text-slate-400 hover:text-white'
+          }`}
+        >
+          {cat.label} ({count})
+        </button>
+      );
+    })}
+  </div>
+</div>
+
         </div>
 
         {/* Portfolio Cards Grid */}
