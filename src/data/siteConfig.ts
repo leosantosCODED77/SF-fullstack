@@ -54,9 +54,9 @@ export const siteConfig: SiteConfig = {
     baseUrl: "https://wa.me/5591991532935",
   },
   instagram: {
-    handle: "@leo_offensive77",
-    profileUrl: "https://www.instagram.com/leo_offensive77/",
-    directUrl: "https://ig.me/m/leo_offensive77",
+    handle: "@sf_fullstack",
+    profileUrl: "https://www.instagram.com/sf_fullstack/",
+    directUrl: "https://ig.me/m/sf_fullstack",
   },
   preferredChannel: "whatsapp",
   logoPath: sfLogoImg,
