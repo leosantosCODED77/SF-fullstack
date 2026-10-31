@@ -159,7 +159,7 @@ export default function Hero({ onOpenSimulator, onOpenBriefing }: HeroProps) {
                       rel="noopener noreferrer"
                       className="text-cyan-400 hover:text-cyan-300 font-medium underline"
                     >
-                      @leo_offensive77
+                      {siteConfig.instagram.handle}
                     </a>
                   </div>
                 </div>
