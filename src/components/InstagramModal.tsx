@@ -11,7 +11,7 @@ interface InstagramModalProps {
 
 export default function InstagramModal({ isOpen, onClose, customText }: InstagramModalProps) {
   const [copied, setCopied] = useState(false);
-  const defaultText = `Olá, @leo_offensive77! Conheci a SF Full Stack pelo site e gostaria de solicitar um orçamento para o meu projeto web.`;
+  const defaultText = `Olá, ${siteConfig.instagram.handle}! Conheci a SF Full Stack pelo site e gostaria de solicitar um orçamento para o meu projeto web.`;
   const [message, setMessage] = useState(customText || defaultText);
 
   useEffect(() => {
@@ -140,7 +140,7 @@ export default function InstagramModal({ isOpen, onClose, customText }: Instagra
                 rel="noopener noreferrer"
                 className="py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-semibold text-slate-300 hover:text-white text-center flex items-center justify-center gap-1.5 transition-colors"
               >
-                <span>Ver Perfil @leo_offensive77</span>
+                <span>Ver Perfil {siteConfig.instagram.handle}</span>
                 <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
               </a>
             </div>
