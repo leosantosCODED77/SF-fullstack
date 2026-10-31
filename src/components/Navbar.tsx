@@ -22,10 +22,10 @@ export default function Navbar({ onOpenInstagram, onOpenSimulator, onOpenBriefin
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-[#0B0D13]/85 border-b border-slate-800/80 transition-all duration-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-2 sm:gap-8">
         {/* Zone 1: Brand Wordmark (Strict Top Bar Contract) */}
-        <a href="#" className="flex items-center gap-3 group shrink-0">
-          <div className="w-11 h-11 rounded-xl overflow-hidden border border-slate-700/80 bg-black flex items-center justify-center relative shadow-sm group-hover:border-slate-500 transition-colors">
+        <a href="#" className="flex items-center gap-2 sm:gap-3 group shrink-0">
+          <div className="w-9 h-9 sm:w-11 sm:h-11 shrink-0 rounded-xl overflow-hidden border border-slate-700/80 bg-black flex items-center justify-center relative shadow-sm group-hover:border-slate-500 transition-colors">
             <img 
               src={siteConfig.logoPath} 
               alt="SF Full Stack" 
@@ -33,10 +33,10 @@ export default function Navbar({ onOpenInstagram, onOpenSimulator, onOpenBriefin
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-lg font-bold tracking-tight text-white group-hover:text-slate-200 transition-colors whitespace-nowrap">
+            <span className="text-sm min-[380px]:text-base sm:text-lg font-bold tracking-tight text-white group-hover:text-slate-200 transition-colors whitespace-nowrap">
               SF <span className="silver-gradient-text">FULL STACK</span>
             </span>
-            <span className="text-[11px] font-medium text-slate-400 tracking-wider uppercase -mt-0.5">
+            <span className="hidden min-[480px]:block text-[11px] font-medium text-slate-400 tracking-wider uppercase -mt-0.5">
               Sites que geram resultados
             </span>
           </div>
@@ -80,15 +80,16 @@ export default function Navbar({ onOpenInstagram, onOpenSimulator, onOpenBriefin
         </div>
 
         {/* Mobile menu trigger */}
-        <div className="flex sm:hidden items-center gap-2">
+        <div className="flex sm:hidden items-center gap-1 shrink-0">
           <a
             href={getWhatsAppUrl("Olá! Vim pelo site da SF Full Stack.")}
             target="_blank"
             rel="noopener noreferrer"
-            className="silver-button px-3 py-1.5 text-xs rounded-md flex items-center gap-1 font-semibold"
+            className="silver-button px-2 py-2 min-[480px]:px-3 min-[480px]:py-1.5 text-xs rounded-md flex items-center gap-1 font-semibold"
+            aria-label="Falar com a SF Full Stack no WhatsApp"
           >
             <MessageSquare className="w-3.5 h-3.5" />
-            <span>WhatsApp</span>
+            <span className="hidden min-[480px]:inline">WhatsApp</span>
           </a>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
