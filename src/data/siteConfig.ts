@@ -49,9 +49,9 @@ export const siteConfig: SiteConfig = {
   role: "Engenheiro de Software & Designer Web Full-Stack",
   bio: "Especialista em transformar ideias e negócios em plataformas web de alta conversão. Desenvolvimento com código moderno, carregamento ultrarrápido, design responsivo de elite e foco comercial para gerar clientes no piloto automático.",
   whatsapp: {
-    rawNumber: "5591991532935",
-    displayNumber: "+55 (91) 99153-2935",
-    baseUrl: "https://wa.me/5591991532935",
+    rawNumber: "5591984988358",
+    displayNumber: "+55 (91) 98498-8358",
+    baseUrl: "https://wa.me/5591984988358",
   },
   instagram: {
     handle: "@sf_fullstack",
