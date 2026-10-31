@@ -147,7 +147,7 @@ export default function Navbar({ onOpenInstagram, onOpenSimulator, onOpenBriefin
               className="silver-button w-full py-2.5 px-4 text-xs rounded-lg text-center flex items-center justify-center gap-2 font-semibold"
             >
               <MessageSquare className="w-3.5 h-3.5" />
-              <span>Chamar no WhatsApp (+55 91 99153-2935)</span>
+              <span>Chamar no WhatsApp (+55 91 98498-8358)</span>
             </a>
           </div>
         </div>
