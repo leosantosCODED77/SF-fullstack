@@ -60,7 +60,7 @@ export default function Navbar({ onOpenInstagram, onOpenSimulator, onOpenBriefin
           <button
             onClick={onOpenInstagram}
             className="px-3.5 py-2 text-xs font-semibold text-slate-300 hover:text-white bg-slate-900/80 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5"
-            title="Ver Instagram @leo_offensive77"
+            title={`Ver Instagram ${siteConfig.instagram.handle}`}
           >
             <span>Instagram</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
@@ -136,7 +136,7 @@ export default function Navbar({ onOpenInstagram, onOpenSimulator, onOpenBriefin
               }}
               className="w-full py-2.5 px-4 text-xs font-semibold text-slate-300 bg-slate-900 rounded-lg border border-slate-800 text-center flex items-center justify-center gap-2"
             >
-              <span>Ver Instagram @leo_offensive77</span>
+              <span>Ver Instagram {siteConfig.instagram.handle}</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
 
