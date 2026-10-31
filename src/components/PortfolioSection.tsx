@@ -47,7 +47,9 @@ export default function PortfolioSection() {
           </div>
 
           {/* Interactive filter tabs */}
-          <div className="flex items-center gap-1.5 p-1 bg-slate-900/90 rounded-xl border border-slate-800 overflow-x-auto no-scrollbar shrink-0">
+         
+<div className="flex items-center gap-1.5 p-1 bg-slate-900/90 rounded-xl border border-slate-800 overflow-x-auto no-scrollbar w-full max-w-full min-w-0 md:w-auto md:shrink-0">
+
             {categories.map((cat) => {
               const count = cat.id === 'all' 
                 ? portfolioProjects.length 
