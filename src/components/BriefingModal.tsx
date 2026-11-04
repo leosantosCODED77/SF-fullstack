@@ -64,8 +64,12 @@ export default function BriefingModal({ isOpen, onClose, initialService }: Brief
     setIntakeStatus('saving');
     setIntakeError('');
     try {
+      const briefingText = formatBriefingMessage(state);
+      if (briefingText.length > 3500)
+        throw new Error('O briefing ultrapassou o limite do registro. Envie pelo WhatsApp.');
       const body = {
         requestId: intakeRequestId.current,
+        briefingText,
         serviceType: state.serviceType,
         projectName: state.general.projectName,
         responsibleName: state.general.responsibleName,
