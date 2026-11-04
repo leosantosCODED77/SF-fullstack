@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { BriefingTurnstile } from './BriefingTurnstile';
 import { 
   BriefingState, 
   initialBriefingState, 
@@ -39,6 +40,83 @@ export default function BriefingModal({ isOpen, onClose, initialService }: Brief
   const [state, setState] = useState<BriefingState>(initialBriefingState);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [copied, setCopied] = useState<boolean>(false);
+  const [intakeToken, setIntakeToken] = useState('');
+  const [intakeStatus, setIntakeStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
+  const [intakeError, setIntakeError] = useState('');
+  const intakeRequestId = useRef(crypto.randomUUID());
+  // Only activated after the private Worker + Turnstile are configured.
+  const intakeSiteKey = import.meta.env.VITE_SF_INTAKE_TURNSTILE_SITE_KEY || '';
+
+  useEffect(() => {
+    if (isOpen) {
+      setIntakeStatus('idle');
+      setIntakeError('');
+      intakeRequestId.current = crypto.randomUUID();
+    }
+  }, [isOpen]);
+
+  async function registerBriefing() {
+    if (!intakeSiteKey || !state.dataConsent || intakeStatus === 'saving' || intakeStatus === 'saved') return;
+    if (!intakeToken) {
+      setIntakeError('Conclua a verificação de segurança antes de registrar o pedido.');
+      return;
+    }
+    setIntakeStatus('saving');
+    setIntakeError('');
+    try {
+      const briefingText = formatBriefingMessage(state);
+      if (briefingText.length > 3500)
+        throw new Error('O briefing ultrapassou o limite do registro. Envie pelo WhatsApp.');
+      const body = {
+        requestId: intakeRequestId.current,
+        briefingText,
+        serviceType: state.serviceType,
+        projectName: state.general.projectName,
+        responsibleName: state.general.responsibleName,
+        phone: state.general.whatsappNumber,
+        email: state.general.channelEmail || '',
+        description: state.general.businessDescription,
+        objective: state.general.mainObjective === 'Outro'
+          ? state.general.customObjective || 'Outro'
+          : state.general.mainObjective,
+        consent: state.dataConsent,
+        turnstileToken: intakeToken,
+      };
+      const response = await fetch('/api/briefing', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || result.saved !== true) {
+        // The API returns names of invalid fields only: never show PII or Turnstile tokens.
+        const names: Record<string, string> = {
+          requestId: 'identificação da solicitação',
+          serviceType: 'serviço',
+          projectName: 'nome da empresa',
+          responsibleName: 'responsável',
+          phone: 'WhatsApp',
+          email: 'e-mail',
+          description: 'descrição do negócio',
+          objective: 'objetivo',
+          briefingText: 'conteúdo do briefing',
+          consent: 'consentimento',
+          turnstileToken: 'verificação de segurança',
+        };
+        const fields = Array.isArray(result.fields)
+          ? result.fields.filter((field: unknown): field is string =>
+              typeof field === 'string' && Object.prototype.hasOwnProperty.call(names, field))
+          : [];
+        const details = fields.length ? ' Confira: ' + fields.map((f: string) => names[f]).join(', ') + '.' : '';
+        throw new Error((result.error || 'Não foi possível registrar o pedido.') + details);
+      }
+      setIntakeStatus('saved');
+      setIntakeToken('');
+    } catch (error) {
+      setIntakeStatus('error');
+      setIntakeError(error instanceof Error ? error.message : 'Falha de conexão. Utilize o WhatsApp.');
+    }
+  }
 
   // Sync initial service if passed
   useEffect(() => {
@@ -1687,7 +1765,7 @@ export default function BriefingModal({ isOpen, onClose, initialService }: Brief
                   />
                   <div className="text-xs text-slate-300 leading-relaxed">
                     <span className="font-semibold text-white">Confirmação de Ciência & Privacidade: </span>
-                    Estou ciente de que as informações fornecidas serão utilizadas exclusivamente pela equipe da SF Full Stack para entrar em contato e elaborar a proposta de orçamento. O envio final é feito pelo meu próprio WhatsApp. Não solicitamos nem armazenamos senhas, CPF ou dados bancários.
+                    Estou ciente de que as informações fornecidas serão utilizadas exclusivamente pela equipe da SF Full Stack para entrar em contato e elaborar a proposta de orçamento. O contato pode ser feito pelo meu próprio WhatsApp. Caso eu escolha registrar a solicitação, meus dados serão armazenados na caixa de entrada comercial privada da SF para preparar o orçamento e retornar meu contato. Não solicitamos senhas, CPF ou dados bancários.
                   </div>
                 </label>
                 {errors.consent && (
@@ -1730,6 +1808,26 @@ export default function BriefingModal({ isOpen, onClose, initialService }: Brief
                   {formatBriefingMessage(state)}
                 </div>
               </div>
+
+              {/* Registro privado opcional; o botão de WhatsApp original permanece. */}
+              {intakeSiteKey && (
+                <div className="rounded-xl border border-slate-800 bg-slate-950 p-4 space-y-3">
+                  <p className="text-xs text-slate-300">Registrar esta solicitação na central de orçamentos da SF Fullstack. Apenas a equipe autorizada poderá visualizar o pedido.</p>
+                  {intakeStatus !== 'saved' && (
+                    <BriefingTurnstile siteKey={intakeSiteKey} onToken={setIntakeToken} />
+                  )}
+                  <button
+                    type="button"
+                    className="silver-button w-full py-3 px-5 rounded-xl text-sm font-bold disabled:opacity-60"
+                    disabled={!intakeToken || intakeStatus === 'saving' || intakeStatus === 'saved'}
+                    onClick={() => void registerBriefing()}
+                  >
+                    {intakeStatus === 'saving' ? 'Registrando solicitação…' : intakeStatus === 'saved' ? 'Solicitação registrada' : 'Registrar solicitação de orçamento'}
+                  </button>
+                  {intakeStatus === 'saved' && <p role="status" className="text-xs text-emerald-400">Pedido registrado na central de orçamentos. Você pode continuar a conversa pelo WhatsApp abaixo.</p>}
+                  {intakeError && <p role="alert" className="text-xs text-rose-400">{intakeError}</p>}
+                </div>
+              )}
 
               {/* Botões de Envio e Cópia */}
               <div className="space-y-3">
