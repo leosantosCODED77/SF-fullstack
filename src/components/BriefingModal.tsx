@@ -88,8 +88,28 @@ export default function BriefingModal({ isOpen, onClose, initialService }: Brief
         body: JSON.stringify(body),
       });
       const result = await response.json().catch(() => ({}));
-      if (!response.ok || result.saved !== true)
-        throw new Error(result.error || 'Não foi possível registrar o pedido.');
+      if (!response.ok || result.saved !== true) {
+        // The API returns names of invalid fields only: never show PII or Turnstile tokens.
+        const names: Record<string, string> = {
+          requestId: 'identificação da solicitação',
+          serviceType: 'serviço',
+          projectName: 'nome da empresa',
+          responsibleName: 'responsável',
+          phone: 'WhatsApp',
+          email: 'e-mail',
+          description: 'descrição do negócio',
+          objective: 'objetivo',
+          briefingText: 'conteúdo do briefing',
+          consent: 'consentimento',
+          turnstileToken: 'verificação de segurança',
+        };
+        const fields = Array.isArray(result.fields)
+          ? result.fields.filter((field: unknown): field is string =>
+              typeof field === 'string' && Object.prototype.hasOwnProperty.call(names, field))
+          : [];
+        const details = fields.length ? ' Confira: ' + fields.map((f: string) => names[f]).join(', ') + '.' : '';
+        throw new Error((result.error || 'Não foi possível registrar o pedido.') + details);
+      }
       setIntakeStatus('saved');
       setIntakeToken('');
     } catch (error) {
